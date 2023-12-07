@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterSlice, { DataActions } from './feature/counter/counterSlice'
 import { createEpicMiddleware } from 'redux-observable'
+import { RootEpics } from './feature/counter/epic/epictype'
 
-const epicMiddleware = createEpicMiddleware<RootAction, RootAction,RootState>()
+
+const epicMiddleware = createEpicMiddleware<any>()
 
 
 export const store = configureStore({
@@ -12,6 +14,7 @@ export const store = configureStore({
   middleware: [epicMiddleware],
 })
 
+epicMiddleware.run(RootEpics)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

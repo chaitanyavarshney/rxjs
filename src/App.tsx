@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useAppDispatch, useAppSelector } from './app/hook';
-import { postDetail } from './app/feature/counter/counterSlice';
+import { post } from './app/feature/counter/counterSlice';
 
 function App() {
 
@@ -12,10 +12,10 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-      const json = await response.json();
-      console.log(json.title)
-      dispatch(postDetail(json.title));
+      // const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      // const json = await response.json();
+      // console.log(json.title)
+      dispatch(post());
    
     } catch (error) {
       console.error('Error fetching data:', error);
